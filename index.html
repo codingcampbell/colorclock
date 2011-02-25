@@ -31,6 +31,10 @@ div {
 		return [normalize(time[0], 24), normalize(time[1], 60), normalize(time[2], 60)];
 	}
 
+	function resize() {
+		clock.style.marginTop = ((window.innerHeight / 2) - clock.clientHeight) + 'px';
+	}
+
 	(function loop() {
 		var time, now;
 		now = new Date();
@@ -49,6 +53,8 @@ div {
 	}());
 
 	document.body.appendChild(clock);
+	resize();
+	window.onresize = resize;
 }());
 </script>
 <span>[time converted to RGB color]</span>
