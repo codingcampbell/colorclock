@@ -8,19 +8,28 @@
 (function () {
 	var clock = document.createElement('div');
 
-	(function loop() {
-		var hours, minutes, seconds, now;
-		now = new Date();
-		hours = now.getHours();
-		minutes = now.getMinutes();
-		seconds = now.getSeconds();
+	function normalize(number, max) {
+		return Math.floor(number * (255 / max));
+	}
 
-		clock.innerHTML = [hours, minutes, seconds].map(function (number) {
+	function getRGB(time) {
+		return [normalize(time[0], 24), normalize(time[1], 60), normalize(time[2], 60)];
+	}
+
+	(function loop() {
+		var time, now;
+		now = new Date();
+		time = [now.getHours(), now.getMinutes(), now.getSeconds()];
+
+		clock.innerHTML = time.map(function (number) {
 			if (number < 10) {
 				return '0' + number;
 			}
 			return number;
 		}).join(':');
+
+		document.body.style.background = 'rgb(' + getRGB(time).join(', ') + ')';
+
 		setTimeout(loop, 500);
 	}());
 
