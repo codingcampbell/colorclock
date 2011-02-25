@@ -4,5 +4,23 @@
 <title>Color Clock</title>
 </head>
 <body>
+<script type="text/javascript">
+(function () {
+	var clock = document.createElement('div');
+
+	(function loop() {
+		var hours, minutes, seconds, now;
+		now = new Date();
+		hours = now.getHours();
+		minutes = now.getMinutes();
+		seconds = now.getSeconds();
+
+		clock.innerHTML = hours + ':' + minutes + ':' + seconds;
+		setTimeout(loop, 500);
+	}());
+
+	document.body.appendChild(clock);
+}());
+</script>
 </body>
 </html>
