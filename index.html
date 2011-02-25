@@ -15,7 +15,12 @@
 		minutes = now.getMinutes();
 		seconds = now.getSeconds();
 
-		clock.innerHTML = hours + ':' + minutes + ':' + seconds;
+		clock.innerHTML = [hours, minutes, seconds].map(function (number) {
+			if (number < 10) {
+				return '0' + number;
+			}
+			return number;
+		}).join(':');
 		setTimeout(loop, 500);
 	}());
 
