@@ -2,6 +2,21 @@
 <html>
 <head>
 <title>Color Clock</title>
+<style type="text/css">
+body {
+	font: 16px calibri, helvetica, verdana, serif;
+}
+div, span {
+	display: block;
+	color: #fff;
+	font-size: 64px;
+	text-align: center;
+	margin: 25px 0;
+}
+div {
+	font-size: 128px;
+}
+</style>
 </head>
 <body>
 <script type="text/javascript">
@@ -26,7 +41,7 @@
 				return '0' + number;
 			}
 			return number;
-		}).join(':');
+		}).join(' : ');
 
 		document.body.style.background = 'rgb(' + getRGB(time).join(', ') + ')';
 
@@ -36,5 +51,6 @@
 	document.body.appendChild(clock);
 }());
 </script>
+<span>[time converted to RGB color]</span>
 </body>
 </html>
